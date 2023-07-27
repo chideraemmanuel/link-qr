@@ -1,0 +1,42 @@
+.generatorPreview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__image {
+    width: clamp(200px, 80%, 300px);
+    aspect-ratio: 1 / 1;
+    opacity: 0.5;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  a {
+    text-align: center;
+    width: 100%;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: 1px solid var(--primary-color);
+    padding: 10px 20px;
+    border-radius: 7px;
+    font-size: var(--sm-font);
+    cursor: pointer;
+    transition: 0.3s ease;
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        background-color: transparent;
+        color: var(--primary-color);
+      }
+    }
+
+    &:active {
+      background-color: transparent;
+      color: var(--primary-color);
+      transform: scale(0.97);
+    }
+  }
+}

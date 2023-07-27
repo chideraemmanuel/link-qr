@@ -1,0 +1,43 @@
+.wordWrap {
+  position: relative;
+  display: inline-block;
+  border: 2px solid var(--primary-color);
+  padding: 0 5px;
+  padding-right: 10px;
+
+  &__word {
+    display: inline-block;
+    color: var(--primary-color);
+  }
+
+  > div {
+    width: 10px;
+    height: 10px;
+    background-color: var(--primary-color);
+    position: absolute;
+  }
+
+  &__topRightBox {
+    right: 0;
+    top: 0;
+    transform: translate(50%, -50%);
+  }
+
+  &__topLeftBox {
+    left: 0;
+    top: 0;
+    transform: translate(-50%, -50%);
+  }
+
+  &__bottomRightBox {
+    right: 0;
+    bottom: 0;
+    transform: translate(50%, 50%);
+  }
+
+  &__bottomBox {
+    left: 0;
+    bottom: 0;
+    transform: translate(-50%, 50%);
+  }
+}

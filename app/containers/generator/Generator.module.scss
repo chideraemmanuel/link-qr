@@ -1,0 +1,46 @@
+.generator {
+  max-width: var(--section-max-width);
+  margin: 0 auto;
+  padding: 0 32px;
+  // to show complete box shadow
+  margin-bottom: 20px;
+
+  &__panel {
+    border-radius: 7px;
+    background-color: var(--bg-color);
+    // box-shadow: 0 0 10px rgba(3, 61, 220, 0.1);
+    border: var(--border);
+    padding: 24px;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+
+    @media screen and (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+
+    > div {
+      //   box-shadow: 0 0 5px rgba(3, 61, 220, 0.1);
+      background-color: var(--gray-100);
+      padding: 10px;
+
+      > span {
+        display: block;
+        font-size: var(--md-font);
+        font-weight: bold;
+        text-align: center;
+        color: var(--secondary-text-color);
+        padding-bottom: 12px;
+        margin-bottom: 12px;
+        border-bottom: var(--border);
+      }
+    }
+
+    &_options {
+    }
+
+    &_preview {
+    }
+  }
+}
