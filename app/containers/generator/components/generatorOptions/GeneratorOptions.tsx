@@ -1,9 +1,15 @@
 "use client";
 
-import { setColor, setSize, setUrl } from "@/app/redux/slices/QRGeneratorSlice";
+import {
+  setColor,
+  setPreviewImageSrc,
+  setSize,
+  setUrl,
+} from "@/app/redux/slices/QRGeneratorSlice";
 import { StoreTypes } from "../../../../redux/store";
 import styles from "./GeneratorOptions.module.scss";
 import { useSelector, useDispatch } from "react-redux";
+import { FormEvent } from "react";
 
 const GeneratorOptions: React.FC = () => {
   const {
@@ -12,8 +18,26 @@ const GeneratorOptions: React.FC = () => {
 
   const dispatch = useDispatch();
 
+  const handleGenerate = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (!navigator.onLine) {
+      alert("Please check your internet connection.");
+      return;
+    }
+
+    dispatch(
+      setPreviewImageSrc(
+        `http://api.qrserver.com/v1/create-qr-code/?data=${url}&size=${size}x${size}&format=svg`
+      )
+    );
+  };
+
   return (
-    <form className={styles.generatorOptions}>
+    <form
+      className={styles.generatorOptions}
+      onSubmit={(e) => handleGenerate(e)}
+    >
       {/* <div className={styles.generatorOptions__type}>
         <span>Type</span>
         <div className="">Types...</div>

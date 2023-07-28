@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export interface QrGeneratorStateTypes {
   downloadSource: string;
+  previewImageSrc: string;
   generationOptions: {
     url: string;
     size: string;
@@ -10,6 +11,7 @@ export interface QrGeneratorStateTypes {
 }
 
 const initialState: QrGeneratorStateTypes = {
+  previewImageSrc: "",
   downloadSource: "",
   generationOptions: {
     url: "",
@@ -31,9 +33,16 @@ const QRGeneratorSlice = createSlice({
     setColor: (state: QrGeneratorStateTypes, action) => {
       state.generationOptions.color = action.payload;
     },
+    setPreviewImageSrc: (
+      state: QrGeneratorStateTypes,
+      action: { payload: string }
+    ) => {
+      state.previewImageSrc = action.payload;
+    },
   },
 });
 
-export const { setUrl, setSize, setColor } = QRGeneratorSlice.actions;
+export const { setUrl, setSize, setColor, setPreviewImageSrc } =
+  QRGeneratorSlice.actions;
 
 export default QRGeneratorSlice.reducer;

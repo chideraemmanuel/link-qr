@@ -5,26 +5,33 @@ import styles from "./GeneratorPreview.module.scss";
 import logo from "@/app/assets/logo.svg";
 import Link from "next/link";
 import { useRef } from "react";
-
-interface ImageRef {
-  src: string;
-}
+import { useDispatch, useSelector } from "react-redux";
+import { StoreTypes } from "@/app/redux/store";
+// @ts-ignore
+import { saveAs } from "file-saver";
 
 const GeneratorPreview: React.FC = () => {
-  const imageRef = useRef<ImageRef>();
-  console.log(imageRef.current?.src);
+  const { previewImageSrc } = useSelector(
+    (store: StoreTypes) => store.qrGenerator
+  );
+
+  const downloadQrCode = () => {
+    saveAs(previewImageSrc, "qrcode.jpg");
+  };
 
   return (
     <div className={styles.generatorPreview}>
       <div className={styles.generatorPreview__image}>
-        <Image src={logo} alt="QR Code Preview" ref={imageRef} />
-        {/* <img src={logo} alt="QR Code Preview" /> */}
+        {/* @ts-ignore */}
+        <img src={previewImageSrc} alt="QR Code Preview" />
       </div>
 
-      {/* <Link href={logo}>Download</Link> */}
-      <a href={imageRef.current?.src} download={"qrcode"}>
+      <button
+        onClick={downloadQrCode}
+        disabled={previewImageSrc.length === 0 ? true : false}
+      >
         Download
-      </a>
+      </button>
     </div>
   );
 };
