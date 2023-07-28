@@ -20,7 +20,7 @@ const GeneratorOptions: React.FC = () => {
 
   const handleGenerate = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(color.replace("#", ""));
+    // console.log(color.replace("#", ""));
 
     if (!navigator.onLine) {
       alert("Please check your internet connection.");
