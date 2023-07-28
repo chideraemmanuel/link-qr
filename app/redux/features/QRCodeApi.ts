@@ -18,4 +18,4 @@ export const QRCodeApi = createApi({
 
 // console.log(QRCodeApi);
 
-export const { useCreateQrCodeQuery } = QRCodeApi;
+// export const { useCreateQrCodeQuery } = QRCodeApi;
