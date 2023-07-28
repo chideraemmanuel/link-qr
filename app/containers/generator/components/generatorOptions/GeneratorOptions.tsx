@@ -20,6 +20,7 @@ const GeneratorOptions: React.FC = () => {
 
   const handleGenerate = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    console.log(color.replace("#", ""));
 
     if (!navigator.onLine) {
       alert("Please check your internet connection.");
@@ -28,7 +29,10 @@ const GeneratorOptions: React.FC = () => {
 
     dispatch(
       setPreviewImageSrc(
-        `http://api.qrserver.com/v1/create-qr-code/?data=${url}&size=${size}x${size}&format=svg`
+        `http://api.qrserver.com/v1/create-qr-code/?data=${url}&size=${size}x${size}&color=${color.replace(
+          "#",
+          ""
+        )}&format=jpg`
       )
     );
   };
@@ -44,12 +48,12 @@ const GeneratorOptions: React.FC = () => {
       </div> */}
 
       <label htmlFor="">
-        <span>Enter your website URL</span>
+        <span>Website URL</span>
         <input
           type="url"
           name=""
           id=""
-          placeholder="Enter URL"
+          placeholder="Enter your website URL"
           value={url}
           onChange={(e) => dispatch(setUrl(e.target.value))}
           required

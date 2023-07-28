@@ -5,15 +5,17 @@
 
   svg {
     // font-size: var(--md-font);
-    width: var(--xl-font);
-    height: var(--xl-font);
+    width: var(--lg-font);
+    height: var(--lg-font);
+    color: rgb(165, 183, 255);
+    color: var(--primary-color);
   }
 
   h1 {
     line-height: 0;
     color: var(--primary-color);
     font-size: var(--md-font);
-    font-weight: 800;
+    font-weight: 600;
     font-family: Arial, Helvetica, sans-serif;
   }
 }

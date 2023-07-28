@@ -23,15 +23,22 @@ const GeneratorPreview: React.FC = () => {
     <div className={styles.generatorPreview}>
       <div className={styles.generatorPreview__image}>
         {/* @ts-ignore */}
-        <img src={previewImageSrc} alt="QR Code Preview" />
+        {previewImageSrc.length > 0 && (
+          <img src={previewImageSrc} alt="QR Code Preview" />
+        )}
+        {previewImageSrc.length === 0 && (
+          <span>Generated QR Code will appear here.</span>
+        )}
       </div>
 
-      <button
-        onClick={downloadQrCode}
-        disabled={previewImageSrc.length === 0 ? true : false}
-      >
-        Download
-      </button>
+      {previewImageSrc.length > 0 && (
+        <button
+          onClick={downloadQrCode}
+          disabled={previewImageSrc.length === 0 ? true : false}
+        >
+          Download
+        </button>
+      )}
     </div>
   );
 };

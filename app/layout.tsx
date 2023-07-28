@@ -10,8 +10,9 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "QR Code Generator - by Chidera Emmanuel",
-  description: "A web application for generating unique QR codes for websites",
+  title: "LinkQR | A QR Code Generator - by Chidera Emmanuel",
+  description:
+    "A web application for generating unique and dynamic QR codes for websites",
 };
 
 export default function RootLayout({
