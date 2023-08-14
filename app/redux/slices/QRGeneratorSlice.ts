@@ -8,6 +8,7 @@ export interface QrGeneratorStateTypes {
     size: string;
     color: string;
   };
+  isGenerating: boolean;
 }
 
 const initialState: QrGeneratorStateTypes = {
@@ -18,6 +19,7 @@ const initialState: QrGeneratorStateTypes = {
     size: "300",
     color: "#000000",
   },
+  isGenerating: false,
 };
 
 const QRGeneratorSlice = createSlice({
@@ -39,10 +41,21 @@ const QRGeneratorSlice = createSlice({
     ) => {
       state.previewImageSrc = action.payload;
     },
+    setIsGenerating: (
+      state: QrGeneratorStateTypes,
+      action: { payload: boolean }
+    ) => {
+      state.isGenerating = action.payload;
+    },
   },
 });
 
-export const { setUrl, setSize, setColor, setPreviewImageSrc } =
-  QRGeneratorSlice.actions;
+export const {
+  setUrl,
+  setSize,
+  setColor,
+  setPreviewImageSrc,
+  setIsGenerating,
+} = QRGeneratorSlice.actions;
 
 export default QRGeneratorSlice.reducer;

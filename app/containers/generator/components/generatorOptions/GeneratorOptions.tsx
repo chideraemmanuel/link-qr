@@ -2,6 +2,7 @@
 
 import {
   setColor,
+  setIsGenerating,
   setPreviewImageSrc,
   setSize,
   setUrl,
@@ -27,14 +28,22 @@ const GeneratorOptions: React.FC = () => {
       return;
     }
 
-    dispatch(
-      setPreviewImageSrc(
-        `http://api.qrserver.com/v1/create-qr-code/?data=${url}&size=${size}x${size}&color=${color.replace(
-          "#",
-          ""
-        )}&format=jpg`
-      )
-    );
+    dispatch(setPreviewImageSrc(""));
+
+    dispatch(setIsGenerating(true));
+
+    setTimeout(() => {
+      dispatch(
+        setPreviewImageSrc(
+          `http://api.qrserver.com/v1/create-qr-code/?data=${url}&size=${size}x${size}&color=${color.replace(
+            "#",
+            ""
+          )}&format=jpg`
+        )
+      );
+
+      dispatch(setIsGenerating(false));
+    }, 2000);
   };
 
   return (

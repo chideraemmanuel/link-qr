@@ -9,9 +9,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { StoreTypes } from "@/app/redux/store";
 // @ts-ignore
 import { saveAs } from "file-saver";
+import Spinner from "@/app/components/spinner/Spinner";
 
 const GeneratorPreview: React.FC = () => {
-  const { previewImageSrc } = useSelector(
+  const { previewImageSrc, isGenerating } = useSelector(
     (store: StoreTypes) => store.qrGenerator
   );
 
@@ -22,12 +23,13 @@ const GeneratorPreview: React.FC = () => {
   return (
     <div className={styles.generatorPreview}>
       <div className={styles.generatorPreview__image}>
+        {previewImageSrc.length === 0 && !isGenerating && (
+          <span>Generated QR Code will appear here.</span>
+        )}
+        {isGenerating && <Spinner />}
         {/* @ts-ignore */}
         {previewImageSrc.length > 0 && (
           <img src={previewImageSrc} alt="QR Code Preview" />
-        )}
-        {previewImageSrc.length === 0 && (
-          <span>Generated QR Code will appear here.</span>
         )}
       </div>
 
